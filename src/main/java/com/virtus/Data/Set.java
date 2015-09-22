@@ -42,6 +42,16 @@ public class Set {
         return true;
     }
     
+    public Boolean addRow(Row pRow) {
+        for(int i = 0; i < numCols; ++i) {
+            if(Columns.get(i).add(pRow.getAt(i)))
+                continue; //Common case first
+            return false; //Error add item
+        }
+        
+        return true;
+    }
+    
     public Row getRow(int pIndex) {
         Row row = new Row();
         

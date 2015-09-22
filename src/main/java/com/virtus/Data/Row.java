@@ -6,14 +6,15 @@
 package com.virtus.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author jared
  */
 public class Row {
-    ArrayList<Object> Items;
-    ArrayList<TYPE> Types;
+    private ArrayList<Object> Items;
+    private ArrayList<TYPE> Types;
     
     int len;
 
@@ -22,6 +23,10 @@ public class Row {
         Types = new ArrayList<>();
         
         len = 0;
+    }
+    
+    public List<Object> Items() {
+        return Items;
     }
     
     public Boolean add(Object pItem, TYPE pType) {

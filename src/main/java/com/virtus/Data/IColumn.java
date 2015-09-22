@@ -12,4 +12,6 @@ package com.virtus.Data;
 public interface IColumn {
     public Object getAt(int pIndex);
     public TYPE getType();
+    public Boolean add(Object pItem);
+    
 }
