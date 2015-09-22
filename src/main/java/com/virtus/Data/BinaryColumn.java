@@ -11,4 +11,7 @@ package com.virtus.Data;
  */
 public class BinaryColumn implements IColumn {
     
+    public static Boolean cast(Object pItem) {
+        return (Boolean)pItem;
+    }
 }

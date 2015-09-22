@@ -11,4 +11,7 @@ package com.virtus.Data;
  */
 public class NumericColumn implements IColumn {
     
+    public static double cast(Object pItem) {
+        return (double)pItem;
+    }
 }

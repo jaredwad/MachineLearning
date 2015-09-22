@@ -11,4 +11,7 @@ package com.virtus.Data;
  */
 public class DiscreteColumn implements IColumn {
     
+    public static String cast(Object pItem) {
+        return (String) pItem;
+    }
 }
