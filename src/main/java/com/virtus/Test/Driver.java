@@ -1,4 +1,4 @@
-package Test;
+package com.virtus.Test;
 
 import java.sql.SQLException;
 import Database.DBUtils;
