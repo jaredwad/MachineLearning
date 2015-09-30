@@ -46,7 +46,17 @@ public class Set {
         for(int i = 0; i < numCols; ++i) {
             if(Columns.get(i).add(pRow.getAt(i)))
                 continue; //Common case first
-            return false; //Error add item
+            return false; //Error adding item
+        }
+        
+        return true;
+    }
+    
+    public Boolean removeRow(int pIndex) {
+        for(IColumn col : Columns) {
+            if(col.removeAt(pIndex))
+                continue; //Common case first
+            return false; //Error removing item
         }
         
         return true;
@@ -61,4 +71,7 @@ public class Set {
         
         return row;
     }
+    
+    public int NumColumns() { return numCols; }
+    public int NumRows   () { return numRows; }
 }
