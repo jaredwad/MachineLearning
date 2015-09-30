@@ -5,10 +5,36 @@
  */
 package com.virtus.JLL.SemiSupervised;
 
+import com.virtus.Data.Set;
+
 /**
  *
  * @author jared
  */
-public class PassiveLearner {
+public class PassiveLearner extends SemiSupervisedLearner {
+    int[] testOrder;
+    
+    
+    public PassiveLearner(Set pDataSet, ITest pTester, ITest pAccuracyChecker
+            , float pTargetAccuracy) {
+        dataSet = pDataSet;
+        tester = pTester;
+        accuracyChecker = pAccuracyChecker;
+        targetAccuracy = pTargetAccuracy;
+        
+        initializeTestOrder();        
+    }
+    
+    
+    
+    
+    
+    
+    private void initializeTestOrder() {
+        testOrder = new int[dataSet.NumRows()];
+        
+        
+    }
+    
     
 }

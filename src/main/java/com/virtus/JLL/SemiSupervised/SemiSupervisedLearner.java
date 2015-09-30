@@ -5,10 +5,18 @@
  */
 package com.virtus.JLL.SemiSupervised;
 
+import com.virtus.Data.Set;
+
 /**
  *
  * @author jared
  */
-public class ActiveLearner extends SemiSupervisedLearner {
+public abstract class SemiSupervisedLearner {
+    protected Set dataSet;
+    
+    protected ITest tester;
+    protected ITest accuracyChecker;
+    
+    protected float targetAccuracy;
     
 }
