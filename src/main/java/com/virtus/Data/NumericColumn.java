@@ -31,7 +31,7 @@ public class NumericColumn implements IColumn {
     }
 
     @Override
-    public Boolean removeAt(int pIndex) {
+    public Object removeAt(int pIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

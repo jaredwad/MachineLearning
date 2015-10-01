@@ -13,5 +13,5 @@ public interface IColumn {
     public Object getAt(int pIndex);
     public TYPE getType();
     public Boolean add(Object pItem);
-    public Boolean removeAt(int pIndex);
+    public Object removeAt(int pIndex);
 }

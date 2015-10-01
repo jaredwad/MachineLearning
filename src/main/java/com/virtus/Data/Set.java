@@ -52,14 +52,16 @@ public class Set {
         return true;
     }
     
-    public Boolean removeRow(int pIndex) {
-        for(IColumn col : Columns) {
-            if(col.removeAt(pIndex))
-                continue; //Common case first
-            return false; //Error removing item
-        }
+    public Row removeRow(int pIndex) {
+        Row row = new Row();
         
-        return true;
+        for(IColumn col : Columns) {
+            Object item = col.removeAt(pIndex);
+            row.add(item, col.getType());
+        }
+
+        numRows--;
+        return row;
     }
     
     public Row getRow(int pIndex) {
