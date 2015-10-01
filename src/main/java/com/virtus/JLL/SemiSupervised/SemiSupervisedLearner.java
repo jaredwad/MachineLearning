@@ -11,7 +11,7 @@ import com.virtus.Data.Set;
  *
  * @author jared
  */
-public abstract class SemiSupervisedLearner {
+public abstract class SemiSupervisedLearner implements Runnable {
     protected Set dataSet;
     
     protected ITest tester;

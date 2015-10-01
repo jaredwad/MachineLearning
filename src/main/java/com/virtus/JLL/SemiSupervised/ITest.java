@@ -13,6 +13,7 @@ import com.virtus.Data.Set;
  */
 public interface ITest {
     public ITestResult runTest(Set testData);
+public abstract class ITest implements Runnable {
     
     
 }

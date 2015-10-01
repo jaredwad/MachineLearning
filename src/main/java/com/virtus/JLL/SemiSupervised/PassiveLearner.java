@@ -14,7 +14,6 @@ import com.virtus.Data.Set;
 public class PassiveLearner extends SemiSupervisedLearner {
     int[] testOrder;
     
-    
     public PassiveLearner(Set pDataSet, ITest pTester, ITest pAccuracyChecker
             , float pTargetAccuracy) {
         dataSet = pDataSet;
@@ -25,16 +24,12 @@ public class PassiveLearner extends SemiSupervisedLearner {
         initializeTestOrder();        
     }
     
-    
-    
-    
-    
-    
     private void initializeTestOrder() {
         testOrder = new int[dataSet.NumRows()];
-        
+    }
+
+    @Override
+    public void run() {
         
     }
-    
-    
 }
