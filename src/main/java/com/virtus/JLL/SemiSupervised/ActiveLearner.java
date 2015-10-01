@@ -12,7 +12,7 @@ package com.virtus.JLL.SemiSupervised;
 public class ActiveLearner extends SemiSupervisedLearner {
     @Override
     public void run() {
-    
+        
     }
     
     

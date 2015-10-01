@@ -7,7 +7,9 @@ package com.virtus.JLL.SemiSupervised;
 
 import com.virtus.Data.Row;
 import com.virtus.Data.Set;
+import com.virtus.Data.TYPE;
 import com.virtus.JUtils.Rand;
+import java.util.List;
 
 /**
  *
@@ -20,13 +22,23 @@ public abstract class ITest implements Runnable {
     protected ITest(double pPercentTest, Set pData) {
         splitData(pPercentTest, pData);
     }
-    
+
     protected void initializeDataSets(Set pData) {
         training = new Set();
         test     = new Set();
+        
+        List<TYPE> types = pData.Types();
+        List<String> names = pData.ColNames();
+        
+        int numCols = pData.NumColumns();
+        
+        for(int i = 0; i < numCols; ++i) {
+            training.addColumn(names.get(i), types.get(i));
+            test    .addColumn(names.get(i), types.get(i));
+        }
     }
-    
-    protected void splitData(double pPercentTest, Set pData) {
+
+    protected final void splitData(double pPercentTest, Set pData) {
         initializeDataSets(pData);
 
         int numRows = pData.NumRows();
@@ -36,8 +48,11 @@ public abstract class ITest implements Runnable {
             
             if(Rand.Bool(pPercentTest)) {
                 test.addRow(row);
+            } else {
+                training.addRow(row);
             }
-            
         }
     }
+    
+    
 }
