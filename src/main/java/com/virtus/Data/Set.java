@@ -1,5 +1,6 @@
 package com.virtus.Data;
 
+import com.virtus.Data.Types.DataItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,12 @@ public class Set {
     
     private int numRows;
     private int numCols;
-    
+    private int classCol;
+
+    public Set() {
+
+    }
+
     ///// Properties /////
 
     public List<TYPE> Types() { return types; }
@@ -27,7 +33,8 @@ public class Set {
     public boolean addColumn(String pColName, TYPE pType) {
         
         try {
-            columns.add(TypeFactory.columnFromType(pType));
+            // TODO figure out how to create a column
+//            columns.add(TypeFactory.columnFromType(pType));
             types.add(pType);
             
             columnNames.add(pColName);
@@ -41,8 +48,8 @@ public class Set {
     
     public Boolean addRow(Row pRow) {
         for(int i = 0; i < numCols; ++i) {
-            if(columns.get(i).add(pRow.getAt(i)))
-                continue; //Common case first
+//            if(columns.get(i).add(pRow.getAt(i)))
+//                continue; //Common case first
             return false; //Error adding item
         }
         
@@ -53,7 +60,7 @@ public class Set {
         Row row = new Row();
         
         for(IColumn col : columns) {
-            Object item = col.removeAt(pIndex);
+            DataItem item = col.removeAt(pIndex);
             row.add(item, col.getType());
         }
 
@@ -70,9 +77,21 @@ public class Set {
         
         return row;
     }
+
+    public List<IColumn> Columns() { return columns; }
     
+    public void setClassCol(int pClassCol) {
+        if(pClassCol > classCol)
+            throw new IndexOutOfBoundsException(pClassCol + " is larger than the number of columns (" + numCols + ")");
+        classCol = pClassCol;
+    }
     
-    
-    
+    public DataItem getClassification(int pRow) {
+        return columns.get(classCol).getAt(pRow);
+    }
+
+    public IColumn getClassCol() {
+        return columns.get(classCol);
+    }
 
 }

@@ -5,3 +5,13 @@ target/test-classes/.netbeans_automatic_build
 *.class
 
 target/*
+
+.idea/*
+
+.idea/uiDesigner.xml
+
+out/*
+
+*.iml
+
+
