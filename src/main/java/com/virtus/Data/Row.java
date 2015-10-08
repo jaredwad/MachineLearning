@@ -5,9 +5,6 @@
  */
 package com.virtus.Data;
 
-import com.virtus.Data.Types.DataItem;
-import com.virtus.exception.InvalidTYPEException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ import java.util.List;
  * @author jared
  */
 public class Row {
-    private ArrayList<DataItem> Items;
+    private ArrayList<Object> Items;
     private ArrayList<TYPE> Types;
     
     int len;
@@ -28,11 +25,11 @@ public class Row {
         len = 0;
     }
     
-    public List<DataItem> Items() {
+    public List<Object> Items() {
         return Items;
     }
     
-    public Boolean add(DataItem pItem, TYPE pType) {
+    public Boolean add(Object pItem, TYPE pType) {
         try {
             Items.add(pItem);
             Types.add(pType);
@@ -42,17 +39,8 @@ public class Row {
         }
         return true;
     }
-
-    public double distance(Row pRow) throws InvalidTYPEException{
-        double distance = 0;
-
-        for(int i = 0; i < len; ++i)
-            distance += Items.get(i).distance(pRow.getAt(i));
-
-        return distance;
-    }
     
-    public DataItem getAt(int pIndex) {
+    public Object getAt(int pIndex) {
         return Items.get(pIndex);
     }
     

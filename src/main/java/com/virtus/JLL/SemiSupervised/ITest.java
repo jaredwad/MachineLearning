@@ -38,7 +38,7 @@ public abstract class ITest implements Runnable {
         }
     }
 
-    private void splitData(double pPercentTest, Set pData) {
+    protected final void splitData(double pPercentTest, Set pData) {
         initializeDataSets(pData);
 
         int numRows = pData.NumRows();
