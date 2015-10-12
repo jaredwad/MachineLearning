@@ -78,6 +78,15 @@ public class Set {
         return row;
     }
 
+    public List<Row> getRows() {
+		ArrayList<Row> rows = new ArrayList<>(numRows);
+
+		for(int i = 0; i < numRows; ++i) {
+			rows.add(getRow(i));
+		}
+		return rows;
+	}
+
     public List<IColumn> Columns() { return columns; }
     
     public void setClassCol(int pClassCol) {
