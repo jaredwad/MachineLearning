@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.virtus.Data.IColumn;
+import com.virtus.Data.TYPE;
 import org.h2.tools.DeleteDbFiles;
 
 public class DBUtils {
@@ -82,6 +84,36 @@ public class DBUtils {
         	connection.close();
         }
     }
+
+	public static IColumn getColumnFromDB(String colName, TYPE type) throws SQLException {
+		System.out.println("Getting column " + colName + " from the Database");
+		IColumn col = null;
+
+		Connection connection = getDBConnection();
+		Statement stmt = null;
+
+		String filePath = new File("lib/Iris.csv").getAbsolutePath();
+
+		String toData =  "INSERT INTO DATA (sepallength, sepalwidth,"
+				+ " petallength, petalwidth, class)"
+				+ " SELECT * FROM CSVREAD('" + filePath + "')";
+
+		try {
+			connection.setAutoCommit(false);
+			stmt = connection.createStatement();
+
+			stmt.execute(toData);
+
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			connection.commit();
+			connection.close();
+		}
+
+		return col;
+	}
     
     public static void DisplayTables() throws SQLException {
     	System.out.println("Starting Display Tables");
@@ -124,9 +156,9 @@ public class DBUtils {
     	
         DeleteDbFiles.execute(DB_PATH, DB_NAME, true);
     }
-    
-    private static Connection getDBConnection() {
-        Connection dbConnection = null;
+
+    public static Connection getDBConnection() {
+		Connection dbConnection = null;
         try {
             Class.forName(DB_DRIVER);
         } catch (ClassNotFoundException e) {
