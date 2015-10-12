@@ -6,6 +6,7 @@
 package com.virtus.Data.Types;
 
 import com.virtus.Data.TYPE;
+import com.virtus.exception.InvalidTYPEException;
 
 /**
  *
@@ -13,7 +14,7 @@ import com.virtus.Data.TYPE;
  */
 public class Numeric  implements DataItem {
 
-    double value;
+    private double value;
 
 	public Numeric(double pValue) {
 		value = pValue;
@@ -31,8 +32,13 @@ public class Numeric  implements DataItem {
     }
 
     @Override
-    public double distance(DataItem otherItem) throws Exception {
+    public double distance(DataItem otherItem) throws InvalidTYPEException {
 		return 1;
     }
-    
+
+	@Override
+	public Boolean equals(DataItem item) {
+		return value == ((Numeric) item).getValue();
+	}
+
 }

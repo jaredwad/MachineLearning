@@ -6,6 +6,7 @@
 package com.virtus.Data.Types;
 
 import com.virtus.Data.TYPE;
+import com.virtus.exception.InvalidTYPEException;
 
 /**
  *
@@ -13,7 +14,7 @@ import com.virtus.Data.TYPE;
  */
 public class Discrete  implements DataItem {
 
-    String value;
+    private String value;
 
 	public Discrete(String pValue) {
 		value = pValue;
@@ -24,13 +25,19 @@ public class Discrete  implements DataItem {
 	public void updateValue(String pValue) {
 		value = pValue;
 	}
+
     @Override
     public TYPE getType() {
 		return TYPE.Discrete;
     }
 
     @Override
-    public double distance(DataItem otherItem) throws Exception {
+    public double distance(DataItem otherItem) throws InvalidTYPEException {
 		return value.equalsIgnoreCase(((Discrete)otherItem).getValue()) ? 0 : 1;
     }
+
+	@Override
+	public Boolean equals(DataItem item) {
+		return getValue().equalsIgnoreCase(((Discrete)item).getValue());
+	}
 }

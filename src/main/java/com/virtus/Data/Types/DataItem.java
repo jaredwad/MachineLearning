@@ -14,6 +14,6 @@ import com.virtus.exception.InvalidTYPEException;
  */
 public interface DataItem {
     TYPE getType();
-    
     double distance(DataItem otherItem) throws InvalidTYPEException;
+	Boolean equals(DataItem item);
 }

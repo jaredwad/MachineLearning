@@ -14,7 +14,7 @@ import com.virtus.exception.InvalidTYPEException;
  */
 public class Binary implements DataItem{
 
-    Boolean value;
+    private Boolean value;
 
     public Binary(Boolean pValue) {
         value = pValue;
@@ -38,5 +38,10 @@ public class Binary implements DataItem{
         }
 
         return value == ((Binary) otherItem).getValue() ? 0 : 1;
+    }
+
+    @Override
+    public Boolean equals(DataItem item) {
+        return value == ((Binary) item).getValue();
     }
 }
