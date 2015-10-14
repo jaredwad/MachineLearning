@@ -27,9 +27,9 @@ public class KNN extends ITest {
 	private int numFalse;
 
 
-	KNN (Set pData) { this(pData, 3, .7); }
-    KNN (Set pData, int pNumNeighbors) { this(pData, pNumNeighbors, .7); }
-    KNN (Set pData, int pNumNeighbors, double pPercentTest) {
+	public KNN (Set pData) throws InvalidTYPEException { this(pData, 3, .7); }
+    public KNN (Set pData, int pNumNeighbors) throws InvalidTYPEException { this(pData, pNumNeighbors, .7); }
+    public KNN (Set pData, int pNumNeighbors, double pPercentTest) throws InvalidTYPEException {
         super(pPercentTest, pData);
         numNeighbors = pNumNeighbors;
 		numCorrect = 0;
@@ -40,7 +40,6 @@ public class KNN extends ITest {
     public void run() {
 		List<Row> rows = test.getRows();
 		int len = rows.size();
-
 
         for(int i = 0; i < len; ++i) {
 			try {
