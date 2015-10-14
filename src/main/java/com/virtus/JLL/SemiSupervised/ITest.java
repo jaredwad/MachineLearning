@@ -9,6 +9,8 @@ import com.virtus.Data.Row;
 import com.virtus.Data.Set;
 import com.virtus.Data.TYPE;
 import com.virtus.JUtils.Rand;
+import com.virtus.exception.InvalidTYPEException;
+
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public abstract class ITest implements Runnable {
     protected Set training;
     protected Set test;
     
-    protected ITest(double pPercentTest, Set pData) {
+    protected ITest(double pPercentTest, Set pData) throws InvalidTYPEException {
         splitData(pPercentTest, pData);
     }
 
@@ -38,7 +40,7 @@ public abstract class ITest implements Runnable {
         }
     }
 
-    private void splitData(double pPercentTest, Set pData) {
+    private void splitData(double pPercentTest, Set pData) throws InvalidTYPEException {
         initializeDataSets(pData);
 
         int numRows = pData.NumRows();
