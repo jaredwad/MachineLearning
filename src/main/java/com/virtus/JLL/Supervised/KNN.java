@@ -115,6 +115,17 @@ public class KNN extends ITest {
         return null;
     }
 
+	@Override
+    public String toString() {
+		String s = "";
+
+		s += "Number correctly Identified: " + numCorrect + "\n";
+
+		s += "Number incorrectly Identified: " + numFalse + "\n";
+
+		return s;
+	}
+
     class Score implements Comparable<Score> {
         double distance;
         int row;
