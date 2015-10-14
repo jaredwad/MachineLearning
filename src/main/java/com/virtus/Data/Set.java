@@ -1,6 +1,9 @@
 package com.virtus.Data;
 
 import com.virtus.Data.Types.DataItem;
+import com.virtus.exception.InvalidColumnException;
+import com.virtus.exception.InvalidTYPEException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,13 @@ public class Set {
     private int classCol;
 
     public Set() {
+		types       = new ArrayList<>();
+		columnNames = new ArrayList<>();
+		columns     = new ArrayList<>();
 
+		numRows  = 0;
+		numCols  = 0;
+		classCol = 0;
     }
 
     ///// Properties /////
@@ -29,7 +38,26 @@ public class Set {
     public int NumRows   () { return numRows; }
     
     ///// Public Functions /////
-    
+
+    public boolean addColumn(IColumn col) throws InvalidColumnException {
+		if(col.length() != numRows) {
+
+			if(numRows == 0) {
+				numRows = col.length();
+			} else {
+				throw new InvalidColumnException(col.length(), numRows);
+			}
+		}
+
+		columns.add(col);
+		columnNames.add(col.getName());
+		types.add(col.getType());
+
+		numCols++;
+
+		return true;
+	}
+
     public boolean addColumn(String pColName, TYPE pType) {
         
         try {
@@ -46,11 +74,10 @@ public class Set {
         return true;
     }
     
-    public Boolean addRow(Row pRow) {
+    public Boolean addRow(Row pRow) throws InvalidTYPEException {
         for(int i = 0; i < numCols; ++i) {
-//            if(columns.get(i).add(pRow.getAt(i)))
-//                continue; //Common case first
-            return false; //Error adding item
+			DataItem item = pRow.getAt(i);
+			columns.get(i).add(item);
         }
         
         return true;
@@ -90,7 +117,7 @@ public class Set {
     public List<IColumn> Columns() { return columns; }
     
     public void setClassCol(int pClassCol) {
-        if(pClassCol > classCol)
+        if(pClassCol > numCols)
             throw new IndexOutOfBoundsException(pClassCol + " is larger than the number of columns (" + numCols + ")");
         classCol = pClassCol;
     }
