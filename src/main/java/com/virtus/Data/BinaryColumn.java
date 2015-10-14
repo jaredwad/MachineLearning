@@ -19,6 +19,6 @@ public class BinaryColumn extends IColumn {
 
     @Override
     public TYPE getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return TYPE.Binary;
     }
 }
