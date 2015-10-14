@@ -27,4 +27,21 @@ public enum TYPE {
     public String toString() {
         return this.name;
     }
+
+    public static IColumn getColumnFromTYPE(TYPE type){
+		IColumn col;
+
+		switch (type) {
+			case Numeric:
+				col = new NumericColumn();
+				break;
+			case Binary:
+				col = new BinaryColumn();
+				break;
+			default:
+				col = new DiscreteColumn();
+				break;
+		}
+		return col;
+	}
 };
