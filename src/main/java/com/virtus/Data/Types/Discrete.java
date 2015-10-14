@@ -40,4 +40,9 @@ public class Discrete  implements DataItem {
 	public Boolean equals(DataItem item) {
 		return getValue().equalsIgnoreCase(((Discrete)item).getValue());
 	}
+
+	@Override
+	public String toString() {
+		return value;
+	}
 }

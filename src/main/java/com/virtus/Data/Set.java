@@ -103,4 +103,21 @@ public class Set {
         return columns.get(classCol);
     }
 
+
+	@Override
+	public String toString() {
+		String s = "";
+
+		for(String colName : columnNames) {
+			s += String.format("%-20s", colName);
+		}
+
+		s += "\n";
+
+		for(int i = 0; i < numRows; ++i) {
+			s += (getRow(i).toString() + "\n");
+		}
+
+		return s;
+	}
 }

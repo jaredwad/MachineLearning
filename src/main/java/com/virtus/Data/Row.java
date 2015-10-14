@@ -59,4 +59,15 @@ public class Row {
     public TYPE getTypeAt(int pIndex) {
         return Types.get(pIndex);
     }
+
+    @Override
+	public String toString() {
+		String s = "";
+
+		for(DataItem item : Items) {
+			s += String.format("%-20s", item.toString());
+		}
+
+		return s;
+	}
 }

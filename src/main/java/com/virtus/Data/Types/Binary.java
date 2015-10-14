@@ -44,4 +44,9 @@ public class Binary implements DataItem{
     public Boolean equals(DataItem item) {
         return value == ((Binary) item).getValue();
     }
+
+    @Override
+	public String toString() {
+		return value.toString();
+	}
 }

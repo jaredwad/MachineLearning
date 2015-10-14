@@ -41,4 +41,9 @@ public class Numeric  implements DataItem {
 		return value == ((Numeric) item).getValue();
 	}
 
+	@Override
+	public String toString() {
+		return Double.toString(value);
+	}
+
 }
